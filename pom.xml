@@ -61,6 +61,8 @@
   </distributionManagement>
 
   <properties>
+    <maven.compiler.debug>true</maven.compiler.debug>
+    <maven.compiler.debuglevel>lines,vars,source</maven.compiler.debuglevel>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
