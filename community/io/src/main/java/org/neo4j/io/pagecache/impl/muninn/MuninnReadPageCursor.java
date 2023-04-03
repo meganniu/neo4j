@@ -22,6 +22,7 @@ package org.neo4j.io.pagecache.impl.muninn;
 import java.io.IOException;
 import org.neo4j.io.pagecache.PageSwapper;
 import org.neo4j.io.pagecache.context.CursorContext;
+import org.neo4j.io.pagecache.logging.CacheLogger;
 import org.neo4j.io.pagecache.tracing.PinEvent;
 
 final class MuninnReadPageCursor extends MuninnPageCursor {
@@ -72,8 +73,7 @@ final class MuninnReadPageCursor extends MuninnPageCursor {
 
     @Override
     protected void pinCursorToPage(PinEvent pinEvent, long pageRef, long filePageId, PageSwapper swapper) {
-        System.out.println(String.format(
-                "%d : Pinning read cursor to (%s, %d)\n", System.currentTimeMillis(), swapper.path(), filePageId));
+        CacheLogger.logEvent(String.format("Pinning read cursor to (%s, %d)", swapper.path(), filePageId));
         init(pinEvent, pageRef);
         if (multiVersioned && shouldLoadSnapshot()) {
             versionStorage.loadReadSnapshot(this, versionContext, pinEvent);

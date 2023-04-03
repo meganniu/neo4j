@@ -28,6 +28,7 @@ import org.neo4j.internal.unsafe.UnsafeUtil;
 import org.neo4j.io.mem.MemoryAllocator;
 import org.neo4j.io.pagecache.PageCursor;
 import org.neo4j.io.pagecache.PageSwapper;
+import org.neo4j.io.pagecache.logging.CacheLogger;
 import org.neo4j.io.pagecache.tracing.EvictionEvent;
 import org.neo4j.io.pagecache.tracing.EvictionEventOpportunity;
 import org.neo4j.io.pagecache.tracing.PageFaultEvent;
@@ -445,6 +446,7 @@ class PageList implements PageReferenceTranslator {
                 if (isModified(pageRef)) {
                     flushModifiedPage(pageRef, evictionEvent, filePageId, swapper, this);
                 }
+                CacheLogger.logEvent(String.format("Evicting page (%s, %d) from cache", swapper.path(), filePageId));
                 swapper.evicted(filePageId);
             }
         }
