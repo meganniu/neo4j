@@ -445,7 +445,7 @@ public abstract class MuninnPageCursor extends PageCursor {
             // we
             // need for the page cursor.
             convertPageFaultLock(pageRef);
-            CacheLogger.logEvent(String.format("Faulting page (%s, %d) into cache", swapper.path(), filePageId));
+            CacheLogger.logEvent(String.format("pf, %s, %d", swapper.path(), filePageId));
             return pageRef;
         } finally {
             latch.release();

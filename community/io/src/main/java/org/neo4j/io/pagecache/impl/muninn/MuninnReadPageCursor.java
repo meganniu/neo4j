@@ -73,7 +73,7 @@ final class MuninnReadPageCursor extends MuninnPageCursor {
 
     @Override
     protected void pinCursorToPage(PinEvent pinEvent, long pageRef, long filePageId, PageSwapper swapper) {
-        CacheLogger.logEvent(String.format("Pinning read cursor to (%s, %d)", swapper.path(), filePageId));
+        CacheLogger.logEvent(String.format("rc1, %s, %d", swapper.path(), filePageId));
         init(pinEvent, pageRef);
         if (multiVersioned && shouldLoadSnapshot()) {
             versionStorage.loadReadSnapshot(this, versionContext, pinEvent);

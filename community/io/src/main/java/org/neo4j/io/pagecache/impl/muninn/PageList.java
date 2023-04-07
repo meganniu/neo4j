@@ -446,7 +446,7 @@ class PageList implements PageReferenceTranslator {
                 if (isModified(pageRef)) {
                     flushModifiedPage(pageRef, evictionEvent, filePageId, swapper, this);
                 }
-                CacheLogger.logEvent(String.format("Evicting page (%s, %d) from cache", swapper.path(), filePageId));
+                CacheLogger.logEvent(String.format("pe, %s, %d", swapper.path(), filePageId));
                 swapper.evicted(filePageId);
             }
         }

@@ -189,7 +189,7 @@ final class MuninnWritePageCursor extends MuninnPageCursor {
     @Override
     protected void pinCursorToPage(PinEvent pinEvent, long pageRef, long filePageId, PageSwapper swapper)
             throws FileIsNotMappedException {
-        CacheLogger.logEvent(String.format("Pinning write cursor to (%s, %d)", swapper.path(), filePageId));
+        CacheLogger.logEvent(String.format("wc, %s, %d", swapper.path(), filePageId));
         init(pinEvent, pageRef);
         // Check if we've been racing with unmapping. We want to do this before
         // we make any changes to the contents of the page, because once all

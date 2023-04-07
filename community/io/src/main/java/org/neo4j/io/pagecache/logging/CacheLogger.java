@@ -19,12 +19,9 @@
  */
 package org.neo4j.io.pagecache.logging;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class CacheLogger {
     // private final String fileName;
-    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH:mm:ss.SSS");
+    // private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH:mm:ss.SSS");
 
     // public CacheLogger(String fileName) {
     //     this.fileName = fileName;
@@ -36,12 +33,13 @@ public class CacheLogger {
 
     public static void logEvent(String msg) {
         StringBuffer sb = new StringBuffer()
-                .append(DATE_FORMAT.format(new Date()))
-                .append(" ")
+                // .append(DATE_FORMAT.format(new Date()))
+                .append(System.currentTimeMillis())
+                .append(", ")
                 .append(msg);
         System.out.println(sb.toString());
         // System.out.println(String.format("Successfully wrote to file %s.", fileName));
-                // pw.println(sb.toString());
+        // pw.println(sb.toString());
         // catch (IOException e) {
         //     System.out.println("An error occurred.");
         //     e.printStackTrace();
